@@ -1,3 +1,6 @@
+/* PROPERTY OF CHARITH NERANGA 
+   This script is protected against unauthorized copying.
+*/
 let lastRaces = [];
 
 document.getElementById("password").addEventListener("keypress", function (e) {
@@ -6,7 +9,7 @@ document.getElementById("password").addEventListener("keypress", function (e) {
 
 function checkPassword() {
   const entered = document.getElementById("password").value;
-  if (entered === "lal1234") {
+  if (entered === "lal1234") { // Password remains the same
     document.getElementById("passwordScreen").style.display = "none";
     document.getElementById("mainContent").style.display = "block";
   } else {
@@ -32,7 +35,8 @@ function clearAll() {
   document.getElementById('output').innerHTML = '';
   lastRaces = [];
 }
-//charith neranga website
+
+// File listener logic
 for (let i = 1; i <= 10; i++) {
   const el = document.getElementById('raceFile' + i);
   if (!el) continue;
@@ -55,8 +59,6 @@ function processText() {
   const minPrize = parseInt(document.getElementById('minPrize').value || 0);
   const maxPrize = parseInt(document.getElementById('maxPrize').value || 900000000);
 
-
-
   const meetingsRaw = document.getElementById('meetingsInput').value;
   const meetingsFilter = meetingsRaw
     ? meetingsRaw.split(',').map(m => m.trim().toUpperCase()).filter(m => m.length > 0)
@@ -74,7 +76,6 @@ function processText() {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (line.includes('@Cour:')) {
-      // Only take letters before any number (removes date)
       const courMatch = line.match(/@Cour:([^\d]+)/);
       currentMeeting = courMatch ? courMatch[1].trim() : '';
     }
@@ -108,7 +109,7 @@ function processText() {
     return timeToMinutes(a.rawSLTime) - timeToMinutes(b.rawSLTime);
   });
 
-  lastRaces = races; // store for Top buttons
+  lastRaces = races; 
   displayRaces(races);
 }
 
@@ -139,7 +140,6 @@ function showTop40() {
   displayRaces(top40);
 }
 
-// top 10 code charith
 function showTop10Meetings() {
   if (!lastRaces.length) {
     alert("Please process races first.");
@@ -173,7 +173,6 @@ function showAllMeetingsBest() {
   displayRaces(bestRaces);
 }
 
-
 function displayRaces(races) {
   const output = document.getElementById('output');
   output.innerHTML = races.map(r => `
@@ -187,7 +186,3 @@ function displayRaces(races) {
     </div>
   `).join('');
 }
-
-
-
-
