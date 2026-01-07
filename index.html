@@ -5,6 +5,39 @@
   <title>Australia Horse Races</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  
+  <script>
+    /**
+     * 1. Disabling Right-Click
+     */
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    /**
+     * 2. Disabling Shortcuts (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J)
+     */
+    document.onkeydown = function(e) {
+      // Disable F12
+      if (e.keyCode === 123) {
+        return false;
+      }
+      // Disable Ctrl+U
+      if (e.ctrlKey && e.keyCode === 85) {
+        return false;
+      }
+      // Disable Ctrl+Shift+I (Inspect)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        return false;
+      }
+      // Disable Ctrl+Shift+J (Console)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        return false;
+      }
+      // Disable Ctrl+S (Save page)
+      if (e.ctrlKey && e.keyCode === 83) {
+        return false;
+      }
+    };
+  </script>
 </head>
 <body>
   <div class="overlay">
@@ -37,14 +70,13 @@
         <div class="col"><input type="number" id="minPrize" class="form-control" placeholder="Min Prize ($)" /></div>
         <div class="col"><input type="number" id="maxPrize" class="form-control" placeholder="Max Prize ($)" /></div>
       </div>
-<!-- charith neranga website -->
+
       <div class="d-flex gap-2 mb-4">
         <button class="btn btn-success" onclick="processText()">Process & Filter</button>
         <button class="btn btn-warning" onclick="showTop5()">Show Top 5</button>
         <button class="btn btn-info" onclick="showTop15()">Show Top 15</button>
         <button class="btn btn-primary" onclick="showTop40()">Show Top 40</button>
 
-        <!-- top 10 code -->
         <button class="btn btn-secondary" onclick="showTop10Meetings()">Top 10 Meetings Best Race</button>
         <button class="btn btn-dark" onclick="showAllMeetingsBest()">All Meetings Best Race</button>
 
@@ -62,11 +94,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
